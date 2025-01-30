@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url({{ url_for('static', filename='images/img2.png') }});
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            background-repeat: no-repeat;
+        }
+
+        .details-form {
+            background: white;
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.3);
+            padding: 20px;
+            text-align: center;
+            width: 400px;
+            margin: 200px 0px 100px 100px;
+        }
+
+        .details-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: black;
+            font-size: 20px;
+        }
+
+        .details-form h1 {
+            color: orange;
+        }
+
+        .details-form input {
+            width: 80%;
+            padding: 8px; /* Increased padding */
+            border: none;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 10px;
+            background: transparent;
+            font-size: 16px; /* Increased font size */
+        }
+
+        .details-form input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .details-form button {
+            background: linear-gradient(to right, rgb(2, 13, 81), rgb(25, 176, 220));
+            color: white;
+            border: none;
+            padding: 10px 15px; /* Increased padding */
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px; /* Increased font size */
+        }
+
+        .details-form a {
+            color: green;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="details-form">
+        <h1>User Details</h1>
+        <form method="post" action="{{ url_for('edit_profile') }}">
+            {{ form.hidden_tag() }}
+            <label>Phone Number</label>
+            {{ form.phone_number(placeholder='Ex:1234567890') }}
+            <br>
+            <label>Address</label>
+            {{ form.address(placeholder='Enter your address') }}
+            <br>
+            <label>Date of Birth</label>
+            {{ form.date_of_birth(placeholder='Ex:11.11.2001') }}
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+        
+    </div>
+</body>
+</html>

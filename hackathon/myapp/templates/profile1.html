@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url({{ url_for('static', filename='images/img2.png') }});
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            background-repeat: no-repeat;
+        }
+
+        .profile-details {
+            background: white;
+            backdrop-filter: blur(10px); /* Glass morphism effect */
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.3); /* Neon effect with cyan color */
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 400px;
+            margin: 150px 0 0px 150px;
+        }
+
+        .profile-details h1 {
+            color: orange;
+        }
+
+        .profile-details label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: left;
+            color: black;
+        }
+
+        .profile-details input {
+            width: 80%;
+            padding: 8px;
+            margin-bottom: 5px;
+            border: 5px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .profile-details button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .logout-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .logout-button {
+        background: linear-gradient(to right, rgb(2, 13, 81), rgb(25, 176, 220));
+        color: white;
+        border: none;
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-top: 10px;
+    }
+    </style>
+</head>
+<body>
+    <div class="profile-details">
+        <h1>Profile</h1>
+
+        <label>Username:</label>
+        <input type="text" value="{{ profile_data.username }}" readonly>
+        <label>Aadhar Number:</label>
+        <input type="text" value="{{ profile_data.aadhar_number }}" readonly>
+        <label>Phone Number:</label>
+        <input type="text" value="{{ profile_data.phone_number }}" readonly>
+        <label>Address:</label>
+        <input type="text" value="{{ profile_data.address }}" readonly>
+        <label>Date of Birth:</label>
+        <input type="text" value="{{ profile_data.date_of_birth }}" readonly>
+
+<a href="{{ url_for('index') }}" class="logout-button">Logout</a>
+    </div>
+
+
+</body>
+</html>

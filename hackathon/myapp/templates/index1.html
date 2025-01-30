@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aadhar Verification System</title>
+    <style>
+        body {
+            font-family: 'Helvetica', Arial, sans-serif;
+            background-image: url({{ url_for('static', filename='images/img2.png') }});
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end; /* Move the container to the right */
+            align-items: center;
+            min-height: 100vh;
+            background-repeat: no-repeat;
+        }
+
+        .catchy-text {
+            position: absolute;
+            left: 50px; /* Adjust the left position as needed */
+            text-align: left;
+            color: white;
+            font-size: 24px;
+            max-width: 300px;
+        }
+
+.welcome-box {
+            background: white; /* Change background color to white */
+            backdrop-filter: blur(10px); /* Glass morphism effect */
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.3); /* Neon effect with cyan color */
+            text-align: center; /* Center-align text within the container */
+            width: 400px;
+            padding: 50px;
+            margin: 250px 50px 80px 0px;
+        }
+
+        .welcome-box h1 {
+            margin: 0;
+            color: red;
+        }
+
+        .welcome-quote {
+            font-style: italic;
+            color: black;
+            margin-bottom: 30px;
+        }
+
+        .welcome-buttons {
+            display: flex;
+            flex-direction: row; /* Align buttons horizontally */
+            justify-content: center; /* Center align the buttons horizontally */
+            margin-top: 20px;
+        }
+
+        .welcome-buttons a {
+            display: inline-block;
+            background: linear-gradient(to right, rgb(2, 13, 81), rgb(25, 176, 220)); /* Gradient from dark blue to light blue */
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 0 5px; /* Add some horizontal spacing between buttons */
+            transition: all 0.3s ease; /* Add smooth transition effect */
+        }
+
+        .welcome-buttons a:hover {
+            background: linear-gradient(to right, rgb(2, 13, 81), rgb(25, 176, 220));
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="catchy-text">
+        <pre style = "font-size: 40px"> <b>Empowering Digital Identities with <br> AADHAR VERIFICATION SYSTEM! </b></pre>
+        <pre> Trust, but verify Aadhar Verification System<br> ensures the authenticity of your identity.</pre>
+    </div>
+    <div class="welcome-box">
+        <h1>Welcome to <br>Aadhar Verification System</h1>
+        <div class="welcome-quote">
+            <p>"Your identity is your power, protect it with Aadhar Verification System."</p>
+        </div>
+        <div class="welcome-buttons">
+            <a href="{{ url_for('register') }}">Register</a>
+            <a href="{{ url_for('login') }}">Login</a>
+        </div>
+    </div>
+</body>
+</html>

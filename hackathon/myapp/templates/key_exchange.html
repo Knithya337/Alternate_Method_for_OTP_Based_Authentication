@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Key Exchange</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        .key-exchange-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        .key-exchange-header {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .submit-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="key-exchange-container">
+        <h1 class="key-exchange-header">Key Exchange</h1>
+        <form method="POST" action="/key_exchange">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                <label for="otp_secret">Your OTP Secret:</label>
+                <input type="text" id="otp_secret" name="otp_secret" value="{{ user.client_public_key }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="generated_otp">Generated OTP:</label>
+                <input type="text" id="generated_otp" name="generated_otp" value="{{ generated_otp }}" readonly>
+            </div>
+            <div class="form-group">
+                <button class="submit-button" type="submit">Exchange Keys</button>
+            </div>
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flash-messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url({{ url_for('static', filename='images/img2.png') }});
+            background-size: cover;
+            margin: 0;
+            padding: 0px;
+            display: flex;
+            justify-content: flex-end; /* Align content to the right side */
+            align-items: flex-start; /* Align content to the top */
+            min-height: 100vh;
+            background-repeat: no-repeat;
+        }
+
+        .login-form {
+            background-color: white; /* Change background color to white */
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.3); /* Neon effect with cyan color */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 300px;
+           margin: 250px 100px 0px 100px;
+        }
+
+         .catchy-contents {
+            flex: 1;
+            padding: 50px;
+            color: white;
+            font-size: 25px;
+           margin-bottom:90px;
+        }
+
+        .catchy-contents h2 {
+            color: orange;
+            margin-bottom: 290px;
+        }
+
+        .login-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .login-form h1 {
+            margin: 0;
+            margin-bottom: 20px;
+            color: orange;
+        }
+
+        .login-form input {
+            width: 80%;
+            padding: 5px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 10px;
+            background-color: transparent;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        .login-form input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .login-form button {
+            background: linear-gradient(to right, rgb(2, 13, 81), rgb(25, 176, 220)); /* Gradient background */
+            color: white;
+            border: none;
+            padding: 5px 15px; /* Adjust padding to reduce the size */
+            font-size: 14px; /* Adjust font size */
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-form a {
+            color: blue;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="catchy-contents">
+        <h2></h2>
+        <pre style = "font-size: 30px"><b>Welcome to our Community!</b></pre>
+        <p>Experience seamless and secure access to your account.<br>
+        Join us today and enjoy the benefits of being a part of our community.</p>
+    </div>
+    <div class="login-form">
+        <h1>Login</h1>
+        {% for message in get_flashed_messages() %}
+            <div class="flash-message">{{ message }}</div>
+        {% endfor %}
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Ex: Sri">
+            <br>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Should contain special characters">
+            <br>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="{{ url_for('register') }}">Register</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Key Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url({{ url_for('static', filename='images/img2.png') }});
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-repeat: no-repeat;
+        }
+
+        .verification-form {
+            background: white;
+            backdrop-filter: blur(10px); /* Glass morphism effect */
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.3); /* Neon effect with cyan color */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 300px;
+            margin: 150px 900px 0 0px;
+        }
+
+        .verification-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .verification-form h1 {
+            color: blue;
+        }
+
+        .verification-form input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .verification-form button {
+            background: linear-gradient(to right, rgb(2, 13, 81), rgb(25, 176, 220));
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="verification-form">
+        <h1>Key Verification</h1>
+        <form method="post">
+            <label for="verification_key">Enter Verification Key</label>
+            <input type="text" id="verification_key" name="verification_key" required>
+            <br>
+            <button type="submit">Verify Key</button>
+        </form>
+
+        {% if verification_result is not none %}
+            <p>
+                {% if verification_result %}
+                    Key verification successful!
+                {% else %}
+                    Key verification failed.
+                {% endif %}
+            </p>
+        {% endif %}
+    </div>
+</body>
+</html>

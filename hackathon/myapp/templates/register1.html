@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url({{ url_for('static', filename='images/img2.png') }});
+            background-color: #f0f0f0;
+            background-size: 1630px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .registration-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            margin-right: 150px;
+            margin-top: 150px;
+        }
+
+        .registration-form {
+            background: white;
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.3);
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .registration-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .registration-form input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 20px;
+            background-color: transparent;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        .registration-form input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .registration-form h1 {
+            margin: 0;
+            margin-bottom: 20px;
+            color: orange;
+            padding: 20px;
+        }
+
+        .registration-form button {
+            background: linear-gradient(to right, rgb(2, 13, 81), rgb(25, 176, 220));
+            color: white;
+            border: none;
+            padding: 8px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .registration-form a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        .text-container {
+            flex: 10;
+            padding: 0%;
+            margin-left: 0;
+            color: white;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="registration-container">
+        <div class="text-container">
+
+            <pre style="font-size: 40px"><b>Welcome to our <br>AADHAR registration platform! </b></pre>Your Aadhar is your key to digital empowerment. Access government services online,<br> verify your identity digitally, enjoy seamless eKYC processes, and <br>stay connected with your personal data. Protect your identity with us. <pre><b>Register for Aadhar today!</b></pre>
+
+        </div>
+    <div class="registration-form">
+        <h1>Registration</h1>
+        {% for message in get_flashed_messages() %}
+            <div class="flash-message">{{ message }}</div>
+        {% endfor %}
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <label>Username:</label>
+            {{ form.username(placeholder="Ex:Sri") }}
+            <br>
+            <label>Password:</label>
+            {{ form.password(placeholder="Should contain special characters") }}
+            <br>
+            <label>Aadhar Number:</label>
+            {{ form.aadhar_number(placeholder="Ex:111122223333") }}
+            <br>
+            <button type="submit">Register</button>
+
+        </form>
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate QR Code</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            background: url("https://img.freepik.com/free-vector/top-view-dark-laptop-background-template_52683-7081.jpg?size=626&ext=jpg&ga=GA1.2.723315003.1692264663&semt=sph") no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+ .qr-container {
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+
+    /* Glassmorphism effect */
+    backdrop-filter: blur(10px); /* Apply background blur effect */
+}
+        .qr-code {
+            max-width: 300px;
+            border: 4px solid #3498db;
+            border-radius: 10px;
+        }
+        .verification-form {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .verification-form label {
+            font-size: 18px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .verification-form input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .verification-form button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+        }
+        .verification-form button:hover {
+            background-color: #2586c5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="qr-container">
+            <h2>Scan the QR Code</h2>
+            <img class="qr-code" src="{{ url_for('static', filename='qr_codes/' + qr_img_filename) }}" alt="QR Code">
+            <div class="verification-form">
+                <form method="POST" action="/verify_key">
+                    <label for="verification_key">Enter Verification Key:</label>
+                    <input type="text" name="verification_key" required>
+                    <button type="submit">Verify</button>
+                </form>
+            </div>
+            <ul class="flash-messages">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

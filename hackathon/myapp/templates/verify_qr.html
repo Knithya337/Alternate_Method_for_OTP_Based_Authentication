@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verify OTP</title>
+    <!-- Import the qrcode library -->
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+</head>
+<body>
+    <div style="text-align: center;">
+        <!-- Display the QR code -->
+        <div id="qrcode"></div>
+        <script>
+            // Create a new QRCode instance
+            var qrcode = new QRCode(document.getElementById("qrcode"), {
+                text: "{{ provisioning_url }}", // Replace with the actual provisioning URL
+                width: 128,
+                height: 128,
+            });
+        </script>
+
+        <h2>Scan QR Code or Enter OTP</h2>
+
+        <!-- Form to verify OTP -->
+        <form method="POST" action="/verify_otp">
+            {{ form.hidden_tag() }}
+            <div>
+                <label for="otp">OTP:</label>
+                <input type="text" name="otp" id="otp" required>
+            </div>
+            <div>
+                <button type="submit">Verify OTP</button>
+            </div>
+        </form>
+
+        <!-- Flash messages for errors/success -->
+        <ul class="flash-messages">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </ul>
+    </div>
+</body>
+</html>
